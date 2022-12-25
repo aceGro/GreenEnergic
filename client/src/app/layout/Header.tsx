@@ -11,11 +11,29 @@ import { Switch } from "@mui/material";
 import { Toolbar } from "@mui/material";
 import { AppBar } from "@mui/material";
 import { NavLink } from "react-router-dom";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 interface Props {
   darkMode: boolean;
   handleThemechange: () => void;
 }
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      light: '#757ce8',
+      main: '#212121',
+      dark: '#002884',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#ff7961',
+      main: '#88CC00',
+      dark: '#ba000d',
+      contrastText: '#FFFFFF',
+    },
+  },
+});
 
 const midLinks = [
   { title: "catalog", path: "/catalog" },
@@ -30,19 +48,21 @@ const rightLinks = [
 
 const navStyles = {
   textDecoration: "none",
-  color: "inherit",
+  color: "grey.500",
   typography: "h6",
   "&:hover": {
-    color: "grey.500",
+    color: "#FFFFFF",
   },
   "&.active": {
-    color: "text.secondary",
+    //color: "text.secondary",
+    color: "#FFFFFF",
   },
 };
 
 export default function Header({ darkMode, handleThemechange }: Props) {
   return (
-    <AppBar position="static" sx={{ mb: 4 }}>
+    <ThemeProvider theme={theme}>
+    <AppBar position="static" sx={{ mb: 4, color: 'black' }}>
       <Toolbar
         sx={{
           display: "flex",
@@ -52,7 +72,7 @@ export default function Header({ darkMode, handleThemechange }: Props) {
       >
         <Box display="flex" alignItems="center">
           <Typography variant="h6" component={NavLink} to="/" sx={navStyles}>
-            GREEN-ENERGIC
+          <span style={{ color: "#88CC00" }}>GREEN-ENERGIC</span>
           </Typography>
           <Switch checked={darkMode} onChange={handleThemechange} />
         </Box>
@@ -66,7 +86,7 @@ export default function Header({ darkMode, handleThemechange }: Props) {
         </List>
 
         <Box display="flex" alignItems="center">
-          <IconButton size="large" sx={{ color: "inherit" }}>
+          <IconButton size="large" sx={{ color: "grey.500" }}>
             <Badge badgeContent={4} color="secondary">
               <ShoppingCart />
             </Badge>
@@ -81,5 +101,6 @@ export default function Header({ darkMode, handleThemechange }: Props) {
         </Box>
       </Toolbar>
     </AppBar>
+    </ThemeProvider>
   );
 }

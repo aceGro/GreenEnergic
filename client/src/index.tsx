@@ -6,19 +6,15 @@ import reportWebVitals from "./reportWebVitals";
 import { createBrowserHistory } from "history";
 import { BrowserRouter } from "react-router-dom";
 
-
 export const history = createBrowserHistory();
-
-
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
-  
 );
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter >
+    <BrowserRouter>
       <App />
     </BrowserRouter>
   </React.StrictMode>

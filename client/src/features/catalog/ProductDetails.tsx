@@ -28,11 +28,11 @@ export default function ProductDetails() {
   if (!product) return <NotFound />
 
   return ( 
-    <Grid container spacing={6}>
+    <Grid container spacing={6} >
         <Grid item xs={6}>
             <img src={product.pictureUrl} alt={product.name} style={{width: '100%'}} />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={6} >
             <Typography variant="h3">{product.name}</Typography>
             <Divider sx={{mb: 2}} />
             <Typography variant="h4" color='#707270'>{(product.price / 100).toFixed(2)} eur</Typography>
