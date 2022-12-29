@@ -11,7 +11,10 @@ axios.defaults.withCredentials = true;
 const responseBody = (response: AxiosResponse) => response.data;
 
 axios.interceptors.response.use(async response => {
+
+// For testing purposes
     await sleep()
+
     return response
 }, (error: AxiosError) => {
     const {data, status} = error.response as AxiosResponse<{
@@ -34,7 +37,7 @@ axios.interceptors.response.use(async response => {
             toast.error(data.title)
             break;
         case 500:
-            // Need more work
+        // Need more work
             // For development
             window.location.href = '/server-error';
             // const navigate = useNavigate();
