@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 //  import { history } from "../..";
 
 // For testing purposes
-const sleep = () => new Promise(resolve => setTimeout(resolve, 1000));
+//const sleep = () => new Promise(resolve => setTimeout(resolve, 1000));
 
 axios.defaults.baseURL = 'http://localhost:5000/api/';
 axios.defaults.withCredentials = true;
@@ -13,7 +13,7 @@ const responseBody = (response: AxiosResponse) => response.data;
 axios.interceptors.response.use(async response => {
 
 // For testing purposes
-    await sleep()
+    //await sleep()
 
     return response
 }, (error: AxiosError) => {
